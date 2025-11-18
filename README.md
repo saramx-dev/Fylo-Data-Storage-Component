@@ -22,8 +22,8 @@ Users should be able to:
 
 ### 🔗 Links
 
-- **Solution URL:** [solution URL]()
-- **Live Demo:** [live]()
+- **Solution URL:** [solution URL](https://github.com/saramx-dev/Fylo-Data-Storage-Component)
+- **Live Demo:** [live](https://saramx-dev.github.io/Fylo-Data-Storage-Component/)
 
 ---
 
