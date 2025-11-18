@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fylo Data Storage Component</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <!--CSS -->
+  <link rel="stylesheet" href="./src/style.css">
+</head>
+
+<body>
+  <div class="container">
+    <!-- Fylo Card -->
+    <div class="fylo-card card">
+      <div class="logo">
+        <i class="fa fa-layer-group" aria-hidden="true"></i>
+        <h2>Fylo</h2>
+      </div>
+      <div class="icons">
+        <button class="icon">
+          <i class="fa fa-file" aria-hidden="true"></i>
+        </button>
+        <button class="icon"><i class="fa fa-folder" aria-hidden="true"></i></button>
+        <button class="icon">
+          <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Storage-bar Card -->
+    <div class="storage-card card">
+      <p class="used-text">You've used <strong>815 GB</strong> of your storage</p>
+      <div class="bar-background">
+        <div class="bar-fill"></div>
+        <div class="bar-dot"></div>
+      </div>
+      <div class="range-labels">
+        <span>0 GB</span>
+        <span>1000 GB</span>
+      </div>
+      <div class="bubble">
+        <span class="big">185</span> GB LEFT
+        <div class="bubble-arrow"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
