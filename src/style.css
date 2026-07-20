@@ -1,8 +1,36 @@
-/* Reset */
-* {
-  box-sizing: border-box;
+/* || RESET */
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+ul {
+  list-style-type: none;
+}
+/* raleway-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/raleway-v37-latin-regular.woff2') format('woff2');
+}
+/* raleway-700 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../assets/fonts/raleway-v37-latin-700.woff2') format('woff2');
 }
 :root {
   --primary-start: hsl(6, 100%, 80%);
@@ -19,15 +47,11 @@
 }
 
 /* Base*/
-i {
-  font-size: 1.5rem;
-}
-
 body {
   font-family: "Raleway", sans-serif;
   background-image: url("../images/bg-mobile.png");
   background-repeat: no-repeat;
-  background-position: bottom center;
+  background-position: top; /* Changed to top for better mobile visual */
   background-size: cover;
   background-attachment: fixed;
   background-color: var(--blue-950);
@@ -36,9 +60,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--blue-200);
   font-weight: var(--fw-400);
-  padding: 1.25rem;
 }
 
 .container {
@@ -46,38 +68,42 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 1.25rem;
+  padding: 1rem;
+  max-width: 370px;
 }
 
 .card {
-  width: 320px;
+  width: 100%; /* Use 100% width on mobile, constrained by container max-width */
   background-color: var(--blue-850);
   border-radius: 0.75rem;
   margin: 0 auto;
 }
 
 /* Fylo Card */
-.fylo-card {
+.fylo {
   padding: 40px;
   border-top-right-radius: 6.25rem;
 }
 
-.logo {
+.card__header {
   display: flex;
   align-items: center;
   gap: 15px;
 }
-.logo h2 {
+.card__title {
   font-size: clamp(1.8rem, calc(1.8rem + ((1vw - 0.2rem) * 0.7143)), 2.5rem);
   font-weight: var(--fw-700);
 }
-
-.icons {
+.card__layer{
+  font-size: 2rem;
+}
+.card__buttons {
   margin-top: 1.875rem;
   display: flex;
   gap: 15px;
 }
 
-.icon {
+.card__button {
   background: var(--blue-950);
   padding: 0.5rem;
   border-radius: 10px;
@@ -89,24 +115,28 @@ body {
   justify-content: center;
 }
 
-.icon i {
+.card__icon {
   color: var(--blue-450);
   opacity: 0.8;
+  font-size: 1.5rem;
 }
 
 /* Storage-bar */
-.storage-card {
+.storage {
   padding: 35px;
   position: relative;
   text-align: center;
 }
 
-.used-text {
+.storage__title {
   font-size: 15px;
   margin-bottom: 15px;
+  color: var(--grayish-blue);
 }
-
-.bar-background {
+.storage__title span {
+  color: var(--blue-200);
+}
+.storage__bar {
   background: var(--blue-950);
   height: 15px;
   border-radius: 20px;
@@ -114,88 +144,114 @@ body {
   outline: 3px solid var(--blue-950);
 }
 
-.bar-fill {
+.storage__bar-fill {
   height: 100%;
-  width: 75%;
+  width: 81.5%; /* Match 815 GB usage */
   background: linear-gradient(90deg, var(--primary-start), var(--primary-end));
   border-radius: 20px;
 }
 
-.bar-dot {
+.storage__bar-dot {
   width: 10px;
   height: 10px;
   background: var(--blue-200);
   border-radius: 50%;
   position: absolute;
   top: 2px;
-  left: 72%;
+  left: calc(78.5% - 5px); 
 }
 
-.range-labels {
+.storage__range {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-top: 12px;
   font-weight: var(--fw-700);
+  margin-bottom: 1.5rem;
 }
 
-.bubble {
+/* Mobile bubble positioning */
+.storage__bubble {
   position: absolute;
-  top: 130px;
-  left: 25%;
+  left: calc(20% - 5px);
   background: var(--blue-200);
   color: var(--grayish-blue);
   padding: 15px 20px;
   border-radius: 10px;
   text-align: center;
-  margin: 0 auto;
   font-weight: var(--fw-700);
+  width: 65%;
 }
-.big {
+
+.storage__value {
   font-size: 32px;
-  margin-right: 10px;
+  margin-right: 5px;
   color: var(--blue-950);
 }
 
-.bubble-arrow {
-  display: none;
+.storage__arrow {
+  display: none; /* Hide arrow on mobile */
 }
 
-/* Responsive */
-@media (min-width: 700px) {
+
+
+/* Responsive: Desktop Layout */
+@media (min-width: 768px) {
   body {
+  
     background-image: url("../images/bg-desktop.png");
-    background-size: 100% auto;
+    background-size: 100% 50vh;
+    background-position: bottom; 
   }
 
   .container {
     flex-direction: row;
-    align-items: flex-end;
+    align-items: flex-end; 
+    gap: 30px;
+    max-width: 700px;
+    padding: 0 1.25rem;
   }
-  .storage-card {
+  
+  .fylo {
+  
+    width: 350px; 
+  }
+  
+  .storage{
     text-align: left;
+    width: 500px; 
+    margin-bottom: 0;
+  }
+  .storage__range{
+    margin-bottom: 0;
+  }
+  .storage__bubble {
+    position: absolute;
+    top: -30px;
+    left: auto;
+    right: 30px; 
+    margin: 0;
+    width: auto;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border-bottom-right-radius: 0;
+  }
+
+  .storage__arrow {
+    display: block; 
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent; 
+    border-top: 15px solid var(--blue-200);
+    position: absolute;
+    bottom: -14px; 
+    right: 0;
   }
 }
 
-@media (min-width: 850px) {
-  .storage-card {
-    width: 500px;
-  }
-  .bubble {
-    top: -30%;
-    left: auto;
-    right: 8%;
-    border-bottom-right-radius: 0;
-  }
-  .bubble-arrow {
-    display: block;
-    width: 0;
-    height: 0;
-    border-left: 30px solid transparent;
-    border-right: 0 solid transparent;
-    border-top: 30px solid var(--blue-200);
-    position: absolute;
-    bottom: -15px;
-    right: 0;
-  }
+@media (min-width: 900px) {
+
+.container{
+  max-width: 992px;
+}
 }
